@@ -9,16 +9,22 @@ urlpatterns = [
     path('about/', TemplateView.as_view(template_name='djangoapp/about.html'), name='about'),
     path('contact/', TemplateView.as_view(template_name='djangoapp/contact.html'), name='contact'),
 
+    # HTML Views
+    path('', views.home_html_view, name='home_html'),
+    path('home/', views.home_html_view, name='home_html_alt'),
+    path('dealer_view/<int:dealer_id>/', views.dealer_detail_html_view, name='dealer_detail_html'),
+    path('post_review_view/<int:dealer_id>/', views.post_review_html_view, name='post_review_html'),
+
     # Auth
     path('login/', views.login_user, name='login'),
     path('logout/', views.logout_request, name='logout'),
     path('register/', views.registration, name='register'),
 
-    # Dealers
+    # Dealers API
     path('dealerships/', views.get_dealerships, name='dealerships'),
     path('dealerships/<str:state>/', views.get_dealerships, name='dealerships_by_state'),
 
-    # Dealer details
+    # Dealer details API
     path('dealer/<int:dealer_id>/', views.get_dealer_details, name='dealer_details'),
     path('reviews/dealer/<int:dealer_id>/', views.get_dealer_reviews, name='dealer_reviews'),
 

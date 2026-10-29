@@ -44,7 +44,7 @@ def get_request(endpoint, **kwargs):
     """Try backend URL first, fall back to local data."""
     try:
         request_url = f"{backend_url}{endpoint}"
-        response = requests.get(request_url, timeout=2)
+        response = requests.get(request_url, timeout=0.1)
         return response.json()
     except Exception:
         # Fall back to local data

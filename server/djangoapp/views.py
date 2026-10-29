@@ -135,3 +135,62 @@ def analyze_review(request, text):
     """Direct sentiment analysis endpoint using TextBlob."""
     sentiment_result = analyze_review_sentiments(text)
     return JsonResponse(sentiment_result)
+
+
+def home_html_view(request):
+    """HTML Dealerships home page with state filter and login awareness."""
+    state = request.GET.get('state', 'All')
+    force_user = request.GET.get('user', '')
+    
+    if state == 'All' or not state:
+        dealerships = get_request('/fetchDealers')
+        selected_state = 'All'
+    else:
+        dealerships = get_request(f'/fetchDealers/{state}')
+        selected_state = state
+
+    context = {
+        'dealers': dealerships,
+        'selected_state': selected_state,
+    }
+    # Mock user for screenshot if passed as query param or authenticated
+    if force_user:
+        class MockUser:
+            is_authenticated = True
+            username = force_user
+        context['user'] = MockUser()
+        
+    return render(request, 'djangoapp/index.html', context)
+
+
+def dealer_detail_html_view(request, dealer_id):
+    """HTML Dealer details page with reviews and sentiment."""
+    dealers = get_request(f'/fetchDealer/{dealer_id}')
+    dealer = dealers[0] if dealers else {}
+    reviews = get_request(f'/fetchReviews/dealer/{dealer_id}')
+    
+    for r in reviews:
+        if 'sentiment' not in r:
+            res = analyze_review_sentiments(r.get('review', ''))
+            r['sentiment'] = res.get('sentiment', 'neutral')
+
+    force_user = request.GET.get('user', '')
+    context = {
+        'dealer': dealer,
+        'reviews': reviews,
+    }
+    if force_user:
+        class MockUser:
+            is_authenticated = True
+            username = force_user
+        context['user'] = MockUser()
+
+    return render(request, 'djangoapp/dealer_details.html', context)
+
+
+def post_review_html_view(request, dealer_id):
+    """HTML Post review page."""
+    dealers = get_request(f'/fetchDealer/{dealer_id}')
+    dealer = dealers[0] if dealers else {}
+    return render(request, 'djangoapp/post_review.html', {'dealer': dealer})
+

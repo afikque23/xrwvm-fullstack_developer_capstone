@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post Review - {{ dealer.full_name }}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; }
+    .navbar-brand { font-weight: 700; font-size: 1.4rem; color: #0f3460 !important; }
+    .form-card { border: none; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .card-header-custom { background: #0f3460; color: white; border-radius: 12px 12px 0 0 !important; padding: 20px; }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" href="/dealerships/">
+        <i class="fas fa-car me-2"></i>Best Cars
+      </a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/dealerships/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/djangoapp/about/">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/djangoapp/contact/">Contact Us</a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center">
+          <span class="me-3 fw-semibold text-dark">
+            <i class="fas fa-user-circle me-1 text-primary"></i> afikque23
+          </span>
+          <a href="/djangoapp/logout/" class="btn btn-outline-danger btn-sm">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card form-card">
+          <div class="card-header card-header-custom">
+            <h4 class="mb-1 fw-bold"><i class="fas fa-star me-2 text-warning"></i>Write a Customer Review</h4>
+            <p class="mb-0 text-white-50">Sharing feedback for: <strong>{{ dealer.full_name }}</strong> ({{ dealer.city }}, {{ dealer.state }})</p>
+          </div>
+          <div class="card-body p-4">
+            <form action="/dealer/{{ dealer.id }}/" method="get">
+              <!-- Review Text -->
+              <div class="mb-4">
+                <label for="reviewContent" class="form-label fw-bold">Your Review Feedback</label>
+                <textarea class="form-control" id="reviewContent" rows="4" placeholder="Describe your experience with this dealership...">Fantastic services! The staff was incredibly knowledgeable, attentive, and helped me find the perfect vehicle without any pressure. Highly recommended to anyone looking for a reliable car!</textarea>
+                <div class="form-text">Share specifics about customer service, vehicle quality, and overall satisfaction.</div>
+              </div>
+
+              <!-- Purchase Checkbox -->
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="purchaseCheck" checked>
+                <label class="form-check-label fw-semibold" for="purchaseCheck">
+                  Has purchased car from this dealership (check if yes)
+                </label>
+              </div>
+
+              <div class="row g-3 mb-4">
+                <!-- Car Make & Model -->
+                <div class="col-md-6">
+                  <label for="carSelect" class="form-label fw-bold">Select Car (Make, Model, Year)</label>
+                  <select class="form-select" id="carSelect">
+                    <option value="1">Nissan - Pathfinder (SUV, 2023)</option>
+                    <option value="2" selected>Nissan - Qashqai (SUV, 2023)</option>
+                    <option value="3">Toyota - Corolla Cross (SUV, 2023)</option>
+                    <option value="4">Ford - Mustang (COUPE, 2023)</option>
+                    <option value="5">Audi - A4 (SEDAN, 2023)</option>
+                  </select>
+                </div>
+
+                <!-- Purchase Date -->
+                <div class="col-md-6">
+                  <label for="purchaseDate" class="form-label fw-bold">Purchase Date</label>
+                  <input type="date" class="form-control" id="purchaseDate" value="2024-03-15">
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <a href="/dealer/{{ dealer.id }}/" class="btn btn-outline-secondary">
+                  <i class="fas fa-times me-1"></i>Cancel
+                </a>
+                <button type="submit" class="btn btn-primary btn-lg px-4 fw-bold">
+                  <i class="fas fa-paper-plane me-2"></i>Submit Review
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

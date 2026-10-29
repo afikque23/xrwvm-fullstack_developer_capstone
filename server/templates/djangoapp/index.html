@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dealerships - Best Cars</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; }
+    .navbar-brand { font-weight: 700; font-size: 1.4rem; color: #0f3460 !important; }
+    .table-container { background: white; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 25px; }
+    .table th { background-color: #0f3460; color: white; border: none; }
+    .btn-review { background-color: #0f3460; color: white; font-size: 0.85rem; }
+    .btn-review:hover { background-color: #16213e; color: white; }
+    .dealer-link { color: #0f3460; font-weight: 600; text-decoration: none; }
+    .dealer-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" href="/dealerships/">
+        <i class="fas fa-car me-2"></i>Best Cars
+      </a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active fw-bold text-primary" href="/dealerships/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/djangoapp/about/">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/djangoapp/contact/">Contact Us</a>
+          </li>
+        </ul>
+
+        {% if user.is_authenticated %}
+        <div class="d-flex align-items-center">
+          <span class="me-3 fw-semibold text-dark">
+            <i class="fas fa-user-circle me-1 text-primary"></i> {{ user.username }}
+          </span>
+          <a href="/djangoapp/logout/" class="btn btn-outline-danger btn-sm">
+            <i class="fas fa-sign-out-alt me-1"></i>Logout
+          </a>
+        </div>
+        {% else %}
+        <form class="d-flex align-items-center" action="/djangoapp/login/" method="post">
+          {% csrf_token %}
+          <input class="form-control form-control-sm me-2" type="text" name="userName" placeholder="Username" style="width: 130px;">
+          <input class="form-control form-control-sm me-2" type="password" name="password" placeholder="Password" style="width: 130px;">
+          <button class="btn btn-primary btn-sm me-2" type="submit">Login</button>
+          <a href="/djangoapp/register/" class="btn btn-outline-secondary btn-sm">Register</a>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <div class="bg-white border-bottom py-4 mb-4">
+    <div class="container-fluid px-4">
+      <h3 class="fw-bold mb-1">National Dealership Network</h3>
+      <p class="text-muted mb-0">Browse through certified dealerships across the United States</p>
+    </div>
+  </div>
+
+  <div class="container-fluid px-4 pb-5">
+    <!-- State Filter -->
+    <div class="row mb-3 align-items-center">
+      <div class="col-md-4">
+        <div class="input-group">
+          <label class="input-group-text bg-white fw-semibold" for="stateFilter">
+            <i class="fas fa-filter me-2 text-primary"></i>Filter by State
+          </label>
+          <select class="form-select" id="stateFilter" onchange="filterState(this.value)">
+            <option value="All" {% if selected_state == 'All' %}selected{% endif %}>All States</option>
+            <option value="Kansas" {% if selected_state == 'Kansas' %}selected{% endif %}>Kansas</option>
+            <option value="California" {% if selected_state == 'California' %}selected{% endif %}>California</option>
+            <option value="Illinois" {% if selected_state == 'Illinois' %}selected{% endif %}>Illinois</option>
+            <option value="Texas" {% if selected_state == 'Texas' %}selected{% endif %}>Texas</option>
+            <option value="Arizona" {% if selected_state == 'Arizona' %}selected{% endif %}>Arizona</option>
+            <option value="New York" {% if selected_state == 'New York' %}selected{% endif %}>New York</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-8 text-end">
+        <span class="badge bg-secondary px-3 py-2">Showing {{ dealers|length }} Dealerships</span>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-container">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead>
+            <tr>
+              <th scope="col" style="width: 60px;">ID</th>
+              <th scope="col">Dealer Name</th>
+              <th scope="col">City</th>
+              <th scope="col">Address</th>
+              <th scope="col">Zip</th>
+              <th scope="col">State</th>
+              {% if user.is_authenticated %}
+              <th scope="col" class="text-center" style="width: 150px;">Review Dealer</th>
+              {% endif %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for dealer in dealers %}
+            <tr>
+              <td class="fw-bold text-muted">{{ dealer.id }}</td>
+              <td>
+                <a href="/dealer/{{ dealer.id }}/" class="dealer-link">
+                  <i class="fas fa-warehouse me-2 text-primary"></i>{{ dealer.full_name }}
+                </a>
+              </td>
+              <td>{{ dealer.city }}</td>
+              <td class="text-muted">{{ dealer.city }}, {{ dealer.state }}</td>
+              <td><code>{{ dealer.zip }}</code></td>
+              <td><span class="badge bg-light text-dark border">{{ dealer.state }}</span></td>
+              {% if user.is_authenticated %}
+              <td class="text-center">
+                <a href="/post_review/{{ dealer.id }}/" class="btn btn-review btn-sm">
+                  <i class="fas fa-edit me-1"></i>Review Dealer
+                </a>
+              </td>
+              {% endif %}
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="7" class="text-center py-4 text-muted">No dealerships found for this state.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function filterState(state) {
+      if (state === 'All') {
+        window.location.href = '/dealerships/';
+      } else {
+        window.location.href = '/dealerships/?state=' + encodeURIComponent(state);
+      }
+    }
+  </script>
+</body>
+</html>
