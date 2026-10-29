@@ -1,0 +1,43 @@
+Run actions/checkout@v4
+Syncing repository: afikque23/xrwvm-fullstack_developer_capstone
+Getting Git version
+/usr/bin/git version 2.45.2
+Copying '/home/runner/.gitconfig' to '/github/home/.gitconfig'
+Fetching the repository
+Determining the default branch for repository
+Setting up auth
+Fetching references
+Checking out the ref
+HEAD is now at 8f3c4d1 Initial commit Best Cars Dealership
+Run actions/setup-python@v4
+Installed Python version 3.11.9
+Successfully set up Python 3.11
+Run Install Dependencies
+python -m pip install --upgrade pip
+Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages (24.0)
+Collecting pip
+  Downloading pip-24.1.2-py3-none-any.whl (1.8 MB)
+Installing collected packages: pip
+  Successfully installed pip-24.1.2
+pip install -r server/requirements.txt
+Collecting Django==5.1.0
+  Downloading Django-5.1-py3-none-any.whl (8.2 MB)
+Collecting djangorestframework==3.15.2
+  Downloading djangorestframework-3.15.2-py3-none-any.whl (1.1 MB)
+Collecting django-cors-headers==4.4.0
+  Downloading django_cors_headers-4.4.0-py3-none-any.whl (12 kB)
+Collecting requests==2.32.3
+  Downloading requests-2.32.3-py3-none-any.whl (64 kB)
+Successfully installed Django-5.1.0 django-cors-headers-4.4.0 djangorestframework-3.15.2 requests-2.32.3
+Run Run Tests
+cd server
+python manage.py test djangoapp
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.045s
+
+OK
+Destroying test database for alias 'default'...
+Job succeeded

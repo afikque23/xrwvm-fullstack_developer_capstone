@@ -1,0 +1,3 @@
+curl -X GET http://localhost:8000/djangoapp/reviews/dealer/1/
+
+{"status": 200, "reviews": [{"id": 1, "name": "Berkly Shepley", "dealership": 1, "review": "Fantastic services! The staff was very friendly and helpful. I am very satisfied with my purchase.", "purchase": true, "purchase_date": "02/16/2021", "car_make": "Nissan", "car_model": "Qashqai", "car_year": 2021, "sentiment": "positive"}, {"id": 2, "name": "John Smith", "dealership": 1, "review": "Great experience! Would definitely recommend to others.", "purchase": true, "purchase_date": "03/10/2021", "car_make": "Toyota", "car_model": "Corolla Cross", "car_year": 2022, "sentiment": "positive"}]}
