@@ -4,24 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Best Cars Dealership</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        .hero-section { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: white; padding: 80px 0; }
-        .contact-card { border: none; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-radius: 12px; }
-        .contact-icon { width: 60px; height: 60px; background: linear-gradient(135deg, #0f3460, #16213e); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .hero-section { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: white; padding: 60px 0; }
+        .contact-card { border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-radius: 12px; }
+        .contact-icon { width: 55px; height: 55px; background: linear-gradient(135deg, #0f3460, #16213e); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
         .navbar-brand { font-weight: 700; font-size: 1.5rem; color: #0f3460 !important; }
-        .map-section img { border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .dealer-img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; }
         footer { background-color: #1a1a2e; color: #adb5bd; }
-        .dealer-location-img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="/djangoapp/dealerships/">
+            <a class="navbar-brand" href="/dealerships/">
                 <i class="fas fa-car me-2"></i>Best Cars
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -30,7 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/djangoapp/dealerships/">Home</a>
+                        <a class="nav-link" href="/dealerships/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/djangoapp/about/">About Us</a>
@@ -49,12 +48,12 @@
     <!-- Hero Section -->
     <section class="hero-section text-center">
         <div class="container">
-            <h1 class="display-4 fw-bold mb-3">Contact Us</h1>
-            <p class="lead mb-0">We're here to help you find your perfect car</p>
+            <h1 class="display-5 fw-bold mb-3">Contact Us</h1>
+            <p class="lead mb-0">We are here to assist you with vehicle purchases, services, and dealership inquiries.</p>
         </div>
     </section>
 
-    <!-- Contact Details -->
+    <!-- Contact Info Cards -->
     <section class="py-5">
         <div class="container">
             <div class="row g-4">
@@ -62,151 +61,79 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="card contact-card h-100 p-4 text-center">
                         <div class="contact-icon mx-auto mb-3">
-                            <i class="fas fa-phone fa-xl text-white"></i>
+                            <i class="fas fa-phone fa-lg text-white"></i>
                         </div>
-                        <h5 class="fw-bold">Phone</h5>
-                        <p class="text-muted">Mon-Fri: 8AM - 8PM</p>
-                        <a href="tel:+18005551234" class="text-decoration-none fw-bold text-primary">+1 (800) 555-1234</a><br>
-                        <a href="tel:+18005555678" class="text-decoration-none fw-bold text-primary">+1 (800) 555-5678</a>
+                        <h5 class="fw-bold">Phone Support</h5>
+                        <p class="text-muted small">Mon - Fri: 8am - 8pm</p>
+                        <a href="tel:+18005550199" class="fw-bold text-primary text-decoration-none">+1 (800) 555-0199</a>
                     </div>
                 </div>
                 <!-- Email -->
                 <div class="col-md-6 col-lg-3">
                     <div class="card contact-card h-100 p-4 text-center">
                         <div class="contact-icon mx-auto mb-3">
-                            <i class="fas fa-envelope fa-xl text-white"></i>
+                            <i class="fas fa-envelope fa-lg text-white"></i>
                         </div>
-                        <h5 class="fw-bold">Email</h5>
-                        <p class="text-muted">24/7 Support</p>
-                        <a href="mailto:info@bestcars.com" class="text-decoration-none fw-bold text-primary">info@bestcars.com</a><br>
-                        <a href="mailto:sales@bestcars.com" class="text-decoration-none fw-bold text-primary">sales@bestcars.com</a>
+                        <h5 class="fw-bold">Email Us</h5>
+                        <p class="text-muted small">Online Customer Care</p>
+                        <a href="mailto:contact@bestcars.com" class="fw-bold text-primary text-decoration-none">contact@bestcars.com</a>
                     </div>
                 </div>
                 <!-- Headquarters -->
                 <div class="col-md-6 col-lg-3">
                     <div class="card contact-card h-100 p-4 text-center">
                         <div class="contact-icon mx-auto mb-3">
-                            <i class="fas fa-map-marker-alt fa-xl text-white"></i>
+                            <i class="fas fa-map-marker-alt fa-lg text-white"></i>
                         </div>
                         <h5 class="fw-bold">Headquarters</h5>
-                        <p class="text-muted">
-                            123 Auto Plaza Drive<br>
-                            Suite 100<br>
-                            Chicago, IL 60601<br>
-                            United States
-                        </p>
+                        <p class="text-muted small mb-0">100 Best Cars Plaza<br>Chicago, IL 60601, USA</p>
                     </div>
                 </div>
                 <!-- Hours -->
                 <div class="col-md-6 col-lg-3">
                     <div class="card contact-card h-100 p-4 text-center">
                         <div class="contact-icon mx-auto mb-3">
-                            <i class="fas fa-clock fa-xl text-white"></i>
+                            <i class="fas fa-clock fa-lg text-white"></i>
                         </div>
-                        <h5 class="fw-bold">Business Hours</h5>
-                        <p class="text-muted mb-1">Monday - Friday: 8AM - 8PM</p>
-                        <p class="text-muted mb-1">Saturday: 9AM - 6PM</p>
-                        <p class="text-muted mb-1">Sunday: 10AM - 5PM</p>
-                        <span class="badge bg-success">Open Now</span>
+                        <h5 class="fw-bold">Working Hours</h5>
+                        <p class="text-muted small mb-0">Mon-Sat: 9:00 AM - 7:00 PM<br>Sunday: Closed</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form + Locations -->
+    <!-- Form and Location Image -->
     <section class="py-5 bg-light">
         <div class="container">
-            <div class="row g-5">
-                <!-- Contact Form -->
+            <div class="row g-5 align-items-center">
                 <div class="col-lg-6">
                     <div class="card contact-card p-4">
-                        <h3 class="fw-bold mb-4">Send Us a Message</h3>
+                        <h3 class="fw-bold mb-3">Send a Message</h3>
                         <form>
                             <div class="mb-3">
-                                <label class="form-label fw-semibold">Full Name</label>
-                                <input type="text" class="form-control" placeholder="Your full name">
+                                <label class="form-label fw-semibold">Your Name</label>
+                                <input type="text" class="form-control" placeholder="Enter your full name">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">Email Address</label>
-                                <input type="email" class="form-control" placeholder="your@email.com">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label fw-semibold">Phone Number</label>
-                                <input type="tel" class="form-control" placeholder="+1 (555) 000-0000">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label fw-semibold">Subject</label>
-                                <select class="form-select">
-                                    <option>General Inquiry</option>
-                                    <option>Test Drive Request</option>
-                                    <option>Service Appointment</option>
-                                    <option>Dealer Review</option>
-                                    <option>Other</option>
-                                </select>
+                                <input type="email" class="form-control" placeholder="name@example.com">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">Message</label>
-                                <textarea class="form-control" rows="4" placeholder="How can we help you?"></textarea>
+                                <textarea class="form-control" rows="4" placeholder="How can our dealership network help you?"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">
-                                <i class="fas fa-paper-plane me-2"></i>Send Message
-                            </button>
+                            <button type="button" class="btn btn-primary w-100 fw-bold">Submit Message</button>
                         </form>
                     </div>
                 </div>
-                <!-- Key Locations -->
                 <div class="col-lg-6">
-                    <h3 class="fw-bold mb-4">Our Locations</h3>
-                    <div class="row g-3">
-                        <div class="col-12">
-                            <div class="card contact-card p-3">
-                                <div class="row align-items-center">
-                                    <div class="col-4">
-                                        <img src="https://via.placeholder.com/150/0f3460/ffffff?text=Kansas"
-                                             alt="Kansas Dealership" class="dealer-location-img">
-                                    </div>
-                                    <div class="col-8">
-                                        <h6 class="fw-bold mb-1">Kansas Best Cars - Wichita</h6>
-                                        <p class="text-muted small mb-1"><i class="fas fa-map-marker-alt me-1"></i>456 Car Ave, Wichita, KS 67201</p>
-                                        <p class="text-muted small mb-1"><i class="fas fa-phone me-1"></i>+1 (316) 555-0100</p>
-                                        <a href="mailto:wichita@bestcars.com" class="text-primary small">wichita@bestcars.com</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="card contact-card p-3">
-                                <div class="row align-items-center">
-                                    <div class="col-4">
-                                        <img src="https://via.placeholder.com/150/16213e/ffffff?text=Chicago"
-                                             alt="Chicago Dealership" class="dealer-location-img">
-                                    </div>
-                                    <div class="col-8">
-                                        <h6 class="fw-bold mb-1">Chicago Best Cars</h6>
-                                        <p class="text-muted small mb-1"><i class="fas fa-map-marker-alt me-1"></i>789 Motor Blvd, Chicago, IL 60601</p>
-                                        <p class="text-muted small mb-1"><i class="fas fa-phone me-1"></i>+1 (312) 555-0200</p>
-                                        <a href="mailto:chicago@bestcars.com" class="text-primary small">chicago@bestcars.com</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="card contact-card p-3">
-                                <div class="row align-items-center">
-                                    <div class="col-4">
-                                        <img src="https://via.placeholder.com/150/1a1a2e/ffffff?text=New+York"
-                                             alt="NY Dealership" class="dealer-location-img">
-                                    </div>
-                                    <div class="col-8">
-                                        <h6 class="fw-bold mb-1">Best Cars of New York</h6>
-                                        <p class="text-muted small mb-1"><i class="fas fa-map-marker-alt me-1"></i>321 Fifth Ave, New York, NY 10001</p>
-                                        <p class="text-muted small mb-1"><i class="fas fa-phone me-1"></i>+1 (212) 555-0300</p>
-                                        <a href="mailto:newyork@bestcars.com" class="text-primary small">newyork@bestcars.com</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="card contact-card p-3">
+                        <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&auto=format&fit=crop&q=80"
+                             alt="Dealership Showroom" class="dealer-img mb-3">
+                        <h5 class="fw-bold mb-1">National Customer Experience Center</h5>
+                        <p class="text-muted small mb-2">Our certified dealerships across all 50 states are ready to assist you with test drives, maintenance, and trade-in evaluations.</p>
+                        <p class="text-primary fw-semibold small mb-0"><i class="fas fa-phone-alt me-1"></i>Toll-Free Support: 1-800-BEST-CAR</p>
                     </div>
                 </div>
             </div>
@@ -219,7 +146,5 @@
             <p class="mb-0">&copy; 2024 Best Cars Dealership. All rights reserved. | Developer: Arya Yusufa Agnil Fikri</p>
         </div>
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

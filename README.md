@@ -1,9 +1,10 @@
-# xrwvm-fullstack_developer_capstone
+# fullstack_developer_capstone
 
-## Project: Best Cars Dealership
+## Repository name: xrwvm-fullstack_developer_capstone
+## Project name: fullstack_developer_capstone
 
 ### Project Description
-Best Cars Dealership is a full-stack web application for a national car dealership network, built as part of the IBM Full Stack Software Developer Professional Certificate capstone project.
+fullstack_developer_capstone (Best Cars Dealership) is a full-stack web application for a national car dealership network, built as part of the IBM Full Stack Software Developer Professional Certificate capstone project.
 
 ### Technology Stack
 - **Frontend:** React.js, Bootstrap CSS

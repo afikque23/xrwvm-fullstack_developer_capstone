@@ -1,3 +1,15 @@
-curl -X GET http://localhost:8000/djangoapp/dealerships/Kansas/
+curl -X GET http://localhost:8000/fetchDealers/Kansas
 
-{"status": 200, "dealers": [{"id": 1, "city": "Wichita", "state": "Kansas", "st": "KS", "zip": "67201", "lat": "37.6922", "long": "-97.3375", "short_name": "Kansas Best Cars", "full_name": "Best Cars of Kansas"}, {"id": 2, "city": "Salina", "state": "Kansas", "st": "KS", "zip": "67401", "lat": "38.8403", "long": "-97.6114", "short_name": "Salina Best Cars", "full_name": "Best Cars of Salina Kansas"}]}
+[
+  {
+    "id": 8,
+    "city": "Topeka",
+    "state": "Kansas",
+    "address": "288 Larry Place",
+    "zip": "66642",
+    "lat": 39.0429,
+    "long": -95.7697,
+    "short_name": "Bytecard",
+    "full_name": "Bytecard Car Dealership"
+  }
+]

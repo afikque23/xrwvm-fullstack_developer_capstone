@@ -36,4 +36,11 @@ urlpatterns = [
 
     # Sentiment analysis (direct Django endpoint)
     path('analyze_review/<path:text>/', views.analyze_review, name='analyze_review'),
+
+    # Microservice direct endpoints matching rubric
+    path('fetchDealers', views.fetch_dealers_api, name='fetch_dealers'),
+    path('fetchDealers/<str:state>', views.fetch_dealers_by_state_api, name='fetch_dealers_by_state'),
+    path('fetchDealer/<int:dealer_id>', views.fetch_dealer_by_id_api, name='fetch_dealer_by_id'),
+    path('fetchReviews/dealer/<int:dealer_id>', views.fetch_reviews_by_dealer_api, name='fetch_reviews_by_dealer'),
+    path('analyze/<path:text>', views.analyze_review_api, name='analyze_review_direct'),
 ]
